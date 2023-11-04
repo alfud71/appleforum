@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import LoginBtn from './LoginBtn'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +19,8 @@ export default function RootLayout({ children }) {
             Appleforum
           </Link>
           <Link href="/list">List</Link>
-        </div>{' '}
+          <LoginBtn></LoginBtn>
+        </div>
         {children}
       </body>
     </html>
