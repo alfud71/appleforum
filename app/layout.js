@@ -2,7 +2,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import LoginBtn from './LoginBtn'
-
+import DarkMode from './DarkMode'
+import { cookies } from 'next/headers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -11,15 +12,21 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  let cookie = cookies().get('mode')
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={
+          cookie != undefined && cookie.value == 'dark' ? 'dark-mode' : ''
+        }
+      >
         <div className="navbar">
           <Link href="/" className="logo">
             Appleforum
           </Link>
           <Link href="/list">List</Link>
           <LoginBtn></LoginBtn>
+          <DarkMode />
         </div>
         {children}
       </body>
